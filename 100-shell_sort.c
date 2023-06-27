@@ -7,15 +7,15 @@
  * @y: 2nd index
  * Return: Nothing
  */
-void _swap(int *array, int x, int j)
+void _swap(int *array, int x, int y)
 {
 	int tmp;
 
-	if (array[i] != array[j])
+	if (array[x] != array[y])
 	{
-		tmp = array[i];
-		array[i] = array[j];
-		array[j] = tmp;
+		tmp = array[x];
+		array[x] = array[y];
+		array[y] = tmp;
 	}
 }
 
@@ -27,7 +27,7 @@ void _swap(int *array, int x, int j)
  */
 void shell_sort(int *array, size_t size)
 {
-	size_t h = 0,  i, j;
+	size_t h = 0,  x, y;
 
 	if (size < 2)
 		return;
@@ -37,8 +37,8 @@ void shell_sort(int *array, size_t size)
 
 	while (h >= 1)
 	{
-		for (i = h; i < size; i++)
-			for (j = i; j >= h && array[j] < array[j - h]; j -= h)
+		for (x = h; x < size; x++)
+			for (y = x; y >= h && array[y] < array[y - h]; y -= h)
 				_swap(array, j, j - h);
 		h /= 3;
 		print_array(array, size);
